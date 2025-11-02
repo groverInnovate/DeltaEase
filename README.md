@@ -1,80 +1,181 @@
-# 🏗 Scaffold-ETH 2
+# Delta-Neutral Vault - Trihack Project
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+A sophisticated DeFi protocol implementing delta-neutral strategies using Account Abstraction (ERC-4337) for seamless user experience.
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+## 🎯 Project Overview
 
-⚙️ Built using NextJS, RainbowKit, Foundry, Wagmi, Viem, and Typescript.
+This project implements a delta-neutral vault strategy that:
+- Stakes ETH in Lido to earn staking rewards
+- Opens short positions on GMX to hedge against ETH price movements
+- Provides users with yield while maintaining price neutrality
+- Uses ERC-4337 Account Abstraction for gasless transactions
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+## 🏗️ Architecture
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+### Smart Contracts
+- **DeltaNeutralAccount**: ERC-4337 compliant smart account with delta-neutral strategy execution
+- **DeltaNeutralAccountFactory**: Factory contract for creating new accounts
+- **Mock Contracts**: Lido, Uniswap, and GMX mocks for local testing
 
-## Requirements
+### Frontend
+- **Next.js**: Modern React framework with TypeScript
+- **RainbowKit**: Wallet connection and management
+- **Wagmi**: React hooks for Ethereum
+- **Scaffold-ETH**: Development framework and tooling
 
-Before you begin, you need to install the following tools:
+## 🚀 Quick Start
 
-- [Node (>= v20.18.3)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+### Prerequisites
+- Node.js 18+ and Yarn
+- Git
 
-## Quickstart
+### Installation
 
-To get started with Scaffold-ETH 2, follow the steps below:
-
-1. Install dependencies if it was skipped in CLI:
-
+1. **Clone the repository**
+```bash
+git clone https://github.com/groverInnovate/Trihack.git
+cd Trihack
 ```
-cd my-dapp-example
+
+2. **Install dependencies**
+```bash
 yarn install
 ```
 
-2. Run a local network in the first terminal:
-
-```
+3. **Start local blockchain**
+```bash
 yarn chain
 ```
 
-This command starts a local Ethereum network using Foundry. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/foundry/foundry.toml`.
-
-3. On a second terminal, deploy the test contract:
-
-```
+4. **Deploy contracts** (in a new terminal)
+```bash
 yarn deploy
 ```
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script` to deploy the contract to the network. You can also customize the deploy script.
-
-4. On a third terminal, start your NextJS app:
-
-```
+5. **Start frontend** (in a new terminal)
+```bash
 yarn start
 ```
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+## 📁 Project Structure
 
-Run smart contract test with `yarn foundry:test`
+```
+delta-neutral-vault/
+├── packages/
+│   ├── foundry/                 # Smart contracts
+│   │   ├── contracts/
+│   │   │   ├── DeltaNeutralAccount.sol
+│   │   │   ├── DeltaNeutralAccountFactory.sol
+│   │   │   └── Mock*.sol        # Test contracts
+│   │   ├── script/
+│   │   │   └── Deploy.s.sol     # Deployment script
+│   │   └── test/                # Contract tests
+│   └── nextjs/                  # Frontend application
+│       ├── app/                 # Next.js app router
+│       ├── components/          # React components
+│       ├── hooks/               # Custom hooks
+│       └── contracts/           # Generated contract ABIs
+├── .gitignore                   # Git ignore rules
+├── package.json                 # Root package.json
+└── README.md                    # This file
+```
 
-- Edit your smart contracts in `packages/foundry/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/foundry/script`
+## 🔧 Development Commands
 
+### Blockchain & Contracts
+```bash
+yarn chain          # Start local Anvil blockchain
+yarn deploy         # Deploy contracts to local chain
+yarn verify         # Verify contracts (for testnets)
+yarn foundry:test   # Run contract tests
+```
 
-## Documentation
+### Frontend
+```bash
+yarn start          # Start Next.js development server
+yarn build          # Build for production
+yarn lint           # Run ESLint
+yarn format         # Format code with Prettier
+```
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+## 🌐 Deployed Contracts (Local)
 
-To know more about its features, check out our [website](https://scaffoldeth.io).
+When you run `yarn deploy`, the following contracts are deployed:
 
-## Contributing to Scaffold-ETH 2
+- **YourContract**: Basic Scaffold-ETH contract
+- **DeltaNeutralAccount**: Main strategy contract
+- **MockLido**: Simulates Lido liquid staking
+- **MockstETH**: Simulates stETH token
+- **MockUniswap**: Simulates Uniswap router
+- **MockGMX**: Simulates GMX perpetuals
+- **Factory**: Creates new delta-neutral accounts
 
-We welcome contributions to Scaffold-ETH 2!
+## 🎮 How to Use
 
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+1. **Connect Wallet**: Use RainbowKit to connect your wallet
+2. **Create Account**: Deploy a new delta-neutral account
+3. **Execute Strategy**: Deposit USDC to start the delta-neutral strategy
+4. **Monitor Position**: Track your staking rewards and hedged position
+5. **Exit Strategy**: Close positions and withdraw funds
+
+## 🧪 Testing
+
+### Smart Contract Tests
+```bash
+cd packages/foundry
+forge test
+```
+
+### Frontend Testing
+```bash
+cd packages/nextjs
+yarn test
+```
+
+## 🔐 Security Features
+
+- **Account Abstraction**: Gasless transactions and improved UX
+- **Session Keys**: Temporary permissions for automated strategies
+- **Emergency Controls**: Pause functionality for security
+- **Multi-signature**: Support for multi-owner accounts
+
+## 🛠️ Technology Stack
+
+### Smart Contracts
+- **Solidity 0.8.20+**
+- **Foundry**: Development framework
+- **OpenZeppelin**: Security-audited contracts
+- **Account Abstraction**: ERC-4337 implementation
+
+### Frontend
+- **Next.js 14**: React framework
+- **TypeScript**: Type safety
+- **Tailwind CSS**: Styling
+- **RainbowKit**: Wallet integration
+- **Wagmi**: Ethereum React hooks
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🏆 Trihack 2024
+
+This project was developed for Trihack 2024, showcasing innovative DeFi strategies with Account Abstraction.
+
+## 📞 Support
+
+For questions and support:
+- Create an issue in this repository
+- Contact the development team
+
+---
+
+**Built with ❤️ for Trihack 2024**
