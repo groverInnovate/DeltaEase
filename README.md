@@ -28,7 +28,7 @@ DeFi is **broken** for normal users:
 
 ```mermaid
 graph LR
-    A[💰 Deposit USDC] --> B[🎯 One Click] --> C[📈 Earn 6% APY]
+    A[💰 Deposit USDC] --> B[🎯 One Click] --> C[📈 Simply Earn APY without risk]
     
     style A fill:#e1f5fe
     style B fill:#f3e5f5
