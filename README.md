@@ -1,4 +1,4 @@
-# 🎯 DeltaNeutral
+# 🎯 DeltaEase
 
 > **One-click, gasless delta-neutral yield farming powered by ERC-4337**
 
