@@ -264,13 +264,16 @@ contract DeltaNeutralAccount is BaseAccount, Initializable {
         address[] calldata dest,
         uint256[] calldata value,
         bytes[] calldata func,
-        uint256 /* nonce */,
+        uint256 nonce,
         bytes calldata /* signature */
     ) external onlyEntryPoint {
         require(
             dest.length == func.length && dest.length == value.length,
             "DeltaNeutralAccount: wrong array lengths"
         );
+        
+        require(nonce == _nonce, "DeltaNeutralAccount: invalid nonce");
+        _incrementNonce();
 
         for (uint256 i = 0; i < dest.length; i++) {
             _call(dest[i], value[i], func[i]);
