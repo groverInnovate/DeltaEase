@@ -1,12 +1,12 @@
 "use client";
 
 import type { NextPage } from "next";
-import { DeltaNeutralVault } from "~~/components/DeltaNeutralVault";
+import { LandingPage } from "~~/components/LandingPage";
 
 const Home: NextPage = () => {
   return (
     <>
-      <DeltaNeutralVault />
+      <LandingPage />
     </>
   );
 };

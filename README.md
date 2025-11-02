@@ -1,8 +1,8 @@
-# 🎯 Delta-Neutral Vault
+# 🎯 DeltaEase
 
-> **Gasless DeFi Strategy Execution with ERC-4337 Account Abstraction**
+> **One Click Delta Neutral Strategy using Account Abstraction(ERC-4337)**
 
-A sophisticated DeFi protocol that enables users to execute delta-neutral strategies through smart contract wallets, eliminating gas fees and simplifying complex multi-step transactions into single-click operations.
+A sophisticated DeFi protocol that enables users to execute delta-neutral strategies through smart contract wallets which enables simplifying complex multi-step transactions into single-click operations.
 
 ## 🚀 Smart Contracts
 
